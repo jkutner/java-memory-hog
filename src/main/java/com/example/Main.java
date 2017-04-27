@@ -27,11 +27,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.sql.DataSource;
+import java.nio.ByteBuffer;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -44,12 +46,15 @@ public class Main {
   @Autowired
   private DataSource dataSource;
 
+  private static List<ByteBuffer> buffers = new ArrayList<>();
+
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }
 
   @RequestMapping("/")
   String index() {
+    buffers.add(ByteBuffer.allocateDirect(40000));
     return "index";
   }
 

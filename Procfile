@@ -1,1 +1,1 @@
-web: java -jar target/java-getting-started-1.0.jar
+web: java -javaagent:target/dependency/heroku-javaagent.jar=stdout=true,lxmem=true -jar target/java-getting-started-1.0.jar
