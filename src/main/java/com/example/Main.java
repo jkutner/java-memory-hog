@@ -37,7 +37,7 @@ public class Main {
       while (true) {
         List<ByteBuffer> buffers = new ArrayList<>();
         for (int i=0; i < 60; i++) {
-          buffers.add(ByteBuffer.allocateDirect(320000));
+          buffers.add(ByteBuffer.allocateDirect(160000));
         }
         try {
           Thread.sleep(1000l);
