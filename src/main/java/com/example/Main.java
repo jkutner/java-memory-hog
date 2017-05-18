@@ -36,7 +36,7 @@ public class Main {
     (new Thread(() -> {
       while (true) {
         List<ByteBuffer> buffers = new ArrayList<>();
-        for (int i=0; i < 30; i++) {
+        for (int i=0; i < 10; i++) {
           buffers.add(ByteBuffer.allocateDirect(160000));
         }
         try {
@@ -50,9 +50,9 @@ public class Main {
     (new Thread(() -> {
       while (true) {
         ByteBuffer b;
-        int length = 0x800; // 128 Mb
+        int length = 0x8FFFF;
         try {
-          b = new RandomAccessFile("target/java-getting-started-1.0.jar", "rw").getChannel().map(FileChannel.MapMode.READ_WRITE, 0, length);
+          b = new RandomAccessFile("target/temp.dat", "rw").getChannel().map(FileChannel.MapMode.READ_WRITE, 0, length);
           Thread.sleep(1000l);
           b = null;
         } catch (Exception e) {
